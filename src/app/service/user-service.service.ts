@@ -7,7 +7,7 @@ import { UserLogin } from '../model/userData';
 })
 export class UserServiceService {
 
-  apiUrlUser:string='/api/User/';
+  apiUrlUser:string='https://freeapi.miniprojectideas.com/api/User/';
   constructor() { }
   http=inject(HttpClient);
 
