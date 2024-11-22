@@ -1,0 +1,116 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-10">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center "><span>
+                            @if(todoStatus){
+                            To-Do's List Completed
+                            }@else if (todoStatusVal=='All') {
+                            All To-Do's
+                            }@else {
+                            To-Do's List Pending
+                            }
+                        </span> </h2>
+                    <div class="row">
+                        <div class="col-3">
+                            <div>
+                                <div class="dropdown text-end mt-3">
+                                    <select class="form-select none" style="border: none;outline: none;" [(ngModel)]="todoStatusVal" (change)="changeStatus()"
+                                        class="form-select form-select-lg mb-3" aria-label="All Todo's">
+                                        <option value="All" selected>All Todo's</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9 mt-3 text-right">
+                            <div class="text-right">
+                                <span style="font-size: 17px;font-weight: 550;">
+                                    <!-- {{NumberOfTodos}} -->
+                                    @if (todoStatusVal=="All") {
+                                    Total Task's:{{NumberOfTodos}}
+                                    }@else if(todoStatusVal=="Completed"){
+                                    Completed Task's:{{NumberOfCompleteTodo}}
+                                    }@else {
+                                    Pending Task's:{{NumberOfPendingTodo}}
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    @for (item of TodoList; track $index) {
+                    @if (todoStatus==item.isCompleted) {
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">{{item.taskName}}</h5>
+                                <div class="badge">
+                                    @if (item.isCompleted) {
+                                    <span class="text-success">Completed!</span>
+                                    } @else {
+                                    <span class="text-danger">Pending!</span>
+                                    }
+                                </div>
+                            </div>
+
+                            <p class="card-text text-muted">{{item.taskDescription}}</p>
+
+                            <div class="mb-2">
+                                <span class="badge bg-secondary me-1 px-3 py-1 text-white">#{{item.tags}}</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="small mb-1">Created On: {{item.createdOn | date:'dd MMM yyyy'}}</p>
+                                </div>
+                                <div class="col-sm-6 text-end">
+                                    <button class="btn btn-sm btn-outline-primary mx-2"
+                                        (click)="onEdit($index)">Edit</button>
+                                    <button class="btn btn-sm btn-outline-danger"
+                                        (click)="onDelete($index)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }@else if(todoStatusVal=='All') {
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">{{item.taskName}}</h5>
+                                <div class="badge">
+                                    @if (item.isCompleted) {
+                                    <span class="text-success">Completed!</span>
+                                    } @else {
+                                    <span class="text-danger">Pending!</span>
+                                    }
+                                </div>
+                            </div>
+
+                            <p class="card-text text-muted">{{item.taskDescription}}</p>
+
+                            <div class="mb-2">
+                                <span class="badge bg-secondary me-1 px-3 py-1 text-white">#{{item.tags}}</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="small mb-1">Created On: {{item.createdOn | date:'dd MMM yyyy'}}</p>
+                                </div>
+                                <div class="col-sm-6 text-end">
+                                    <button class="btn btn-sm btn-outline-primary mx-2"
+                                        (click)="onEdit($index)">Edit</button>
+                                    <button class="btn btn-sm btn-outline-danger"
+                                        (click)="onDelete($index)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

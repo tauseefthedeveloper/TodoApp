@@ -1,0 +1,45 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>{{ isEditMode ? 'Edit' : 'Create Todo' }} To-Do Item</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form #create="ngForm" (ngSubmit)="addTodo()">
+
+                        <!-- Task Name -->
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Task Name</label>
+                            <input type="text" [(ngModel)]="addTodoObj.taskName" name="taskName" class="form-control" id="taskName" placeholder="Enter task name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Task Description</label>
+                            <textarea class="form-control" [(ngModel)]="addTodoObj.taskDescription" name="taskDescription" id="taskDescription" rows="3" placeholder="Describe the task" required></textarea>
+                        </div>
+                        @if (isEditMode) {
+
+                        } @else {
+                            <div class="mb-3">
+                                <label for="createdOn" class="form-label">Created On</label>
+                                <input type="date" [(ngModel)]="addTodoObj.createdOn" [value]="addTodoObj.createdOn" name="createdOn" class="form-control" id="createdOn">
+                            </div>
+                    }
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" [(ngModel)]="addTodoObj.isCompleted" name="isCompleted" type="checkbox" id="isCompleted">
+                        <label class="form-check-label" for="isCompleted">Mark as Completed</label>
+                    </div>
+                        <!-- Tags -->
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" [(ngModel)]="addTodoObj.tags" name="tags" id="tags" placeholder="e.g., work, urgent, personal">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="create.invalid">{{ isEditMode ? 'Update' : 'Create' }} Todo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

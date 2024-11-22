@@ -1,0 +1,105 @@
+<div *ngIf="!isRegisterMode" class="container my-5">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h4 class="mb-0">Login</h4>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        <form #loginForm="ngForm" (ngSubmit)="onLoginUser()">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email"  [(ngModel)]="userLogin.EmailId" class="form-control" name="EmailId" id="email" placeholder="Enter your email"
+                                    required />
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password"  [(ngModel)]="userLogin.Password" name="Password" class="form-control" id="password"
+                                    placeholder="Enter your password" required />
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+                            <p class="mt-1 text-center">Don't have an account?
+                                <a href="javascript:void(0)" (click)="toggleMode()">Register!</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isRegisterMode">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h4 class="mb-0">Register Your Account</h4>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        <form #registerForm="ngForm" (ngSubmit)="CreateAccount()">
+
+                            <!-- Personal Information Section -->
+                            <h5 class="mb-4 text-primary">Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" name="firstName" [(ngModel)]="userRegister.firstName" class="form-control" id="firstName" placeholder="First Name"
+                                        required />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="middleName" class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" name="middleName" [(ngModel)]="userRegister.middleName" id="middleName" placeholder="Middle Name" required/>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="lastName" [(ngModel)]="userRegister.lastName" id="lastName" placeholder="Last Name"
+                                        required />
+                                </div>
+                            </div>
+
+                            <!-- Contact Information Section -->
+                            <h5 class="mt-4 mb-4 text-primary">Contact Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="mobileNo" class="form-label">Mobile Number</label>
+                                    <input type="tel" class="form-control" name="mobileNo" [(ngModel)]="userRegister.mobileNo" id="mobileNo" placeholder="Mobile Number"
+                                        required />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="altMobileNo" class="form-label">Alternate Mobile Number</label>
+                                    <input type="tel" class="form-control" name="altMobileNo" [(ngModel)]="userRegister.altMobileNo" id="altMobileNo"
+                                        placeholder="Alternate Mobile Number" required />
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="emailId" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="emailId" [(ngModel)]="userRegister.emailId" id="emailId" placeholder="Email Address"
+                                        required />
+                                </div>
+                            </div>
+
+                            <!-- Password Section -->
+                            <h5 class="mt-4 mb-4 text-primary">Set Your Password</h5>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="userRegister.password" id="password" placeholder="Password"
+                                    required />
+                            </div>
+
+                            <!-- Register Button -->
+                            <button type="submit" class="btn btn-primary w-100 mt-4 py-2" [disabled]="registerForm.invalid">Create Account</button>
+
+                            <!-- Login Link -->
+                            <p class="mt-3 text-center">Already have an account?
+                                <a href="javascript:void(0)" (click)="toggleMode()">Login here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.profile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-overlay .card {
+    max-width: 500px; 
+    width: 100%;
+    z-index: 1050;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: #ffffff;
+    border: 2px solid #dc3545;
+    border-radius:5px;
+    color: #dc3545;
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-close-custom:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-color: #ffffff;
+}
