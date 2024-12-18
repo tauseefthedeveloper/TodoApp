@@ -1,3 +1,3 @@
-const server = require('../dist/todo-app/src/app/main'); // Adjust the path as necessary
+const server = require('../dist/todo-app/server/main');
 
 module.exports = server.app();
