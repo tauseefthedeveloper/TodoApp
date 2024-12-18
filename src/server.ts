@@ -18,5 +18,6 @@ const server = createServer((req, res) => {
   });
 });
 
-// Export the server for use in Vercel
-export const app = server; // Use `module.exports = { app: server };` for CommonJS
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
