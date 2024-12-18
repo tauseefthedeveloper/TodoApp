@@ -1,5 +1,13 @@
 {
+  "version": 2,
+  "public": true,
+  "name": "todo-app",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+    { "source": "/(.*)", "destination": "/api" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/todo-app/**"
+    }
+  }
 }
