@@ -7,7 +7,7 @@ enableProdMode();
 
 const PORT = process.env.PORT || 4201;
 
-createServer((req, res) => {
+const server = createServer((req, res) => {
   renderModule(AppServerModule, {
     document: '<app-root></app-root>',
     url: req.url,
@@ -16,6 +16,7 @@ createServer((req, res) => {
   }).catch(err => {
     res.status(500).send(err);
   });
-}).listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+// Export the server for use in Vercel
+export const app = server; // Use `module.exports = { app: server };` for CommonJS
