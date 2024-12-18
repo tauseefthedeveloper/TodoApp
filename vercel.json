@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "public": true,
-  "name": "todo-app",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api" }
-  ],
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "dist/todo-app/**"
+  "builds": [
+    {
+      "src": "dist/todo-app/**/*",
+      "use": "@vercel/static"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/todo-app/$1"
+    }
+  ]
 }
