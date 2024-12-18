@@ -1,15 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/todo-app/**/*",
-      "use": "@vercel/static"
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/todo-app/**"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/todo-app/$1"
+      "dest": "/api/index.js"
     }
   ]
 }
