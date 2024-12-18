@@ -15,7 +15,7 @@
           "options": {
             "outputPath": "dist/todo-app",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",  // This is for client-side
             "polyfills": [
               "zone.js"
             ],
@@ -91,6 +91,14 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "server": {  // Add this section for server-side rendering
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/todo-app/server",
+            "main": "src/server.ts",  // Entry point for server-side
+            "tsConfig": "tsconfig.server.json"  // Ensure you have this file
           }
         }
       }
